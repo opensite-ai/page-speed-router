@@ -426,4 +426,4 @@ BSD-3-Clause
 
 ---
 
-Built with ❤️ for the PageSpeed ecosystem
+Built with ❤️ for the OpenSite ecosystem
