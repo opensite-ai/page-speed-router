@@ -2,6 +2,16 @@
 
 ## Lightweight, SSR-compatible routing for the [OpenSite website platform](https://opensite.ai). Native browser routing with zero dependencies, tree-shakable exports, and < 3KB gzipped.
 
+![Opensite Semantic UI](https://octane.cdn.ing/api/v1/images/transform?url=https://cdn.ing/assets/i/r/293696/32zoxkywq03rohw76y453wyxopbk/banner.png&f=webp)
+
+<br />
+
+[![npm version](https://img.shields.io/npm/v/@page-speed/router?style=for-the-badge)](https://www.npmjs.com/package/@page-speed/router)
+[![npm downloads](https://img.shields.io/npm/dm/@page-speed/router?style=for-the-badge)](https://www.npmjs.com/package/@page-speed/router)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=for-the-badge)](./tsconfig.json)
+[![Tree-Shakeable](https://img.shields.io/badge/Tree%20Shakeable-Yes-brightgreen?style=for-the-badge)](#tree-shaking)
+
+
 ## Features
 
 - 🚀 **Ultra-lightweight**: < 3KB minified + gzipped
