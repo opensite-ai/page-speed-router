@@ -11,6 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 #### Core Routing Hooks
+
 - `useUrl()` - Get current URL information (href, pathname, search, hash, origin, host, protocol, port)
 - `useNavigation()` - Programmatic navigation with smooth anchor scrolling support
 - `useGoBack()` - Safe back navigation with configurable fallback path
@@ -18,6 +19,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `useRouteMatch()` - Check if current path matches a route pattern
 
 #### Utility Hooks
+
 - `usePathname()` - Get current pathname
 - `useSearchParams()` - Parse query string into object
 - `useHash()` - Get current hash without #
@@ -31,10 +33,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `useGoForward()` - Forward navigation
 
 #### Components
+
 - `RouterProvider` - Optional context provider for dynamic routes and configuration
 - Most hooks work without provider (direct browser API access)
 
 #### Utilities
+
 - `matchPath()` - Match paths against route patterns
 - `buildPath()` - Build paths from patterns and parameters
 - `scrollToAnchor()` - Smooth scroll to anchor elements with offset support
@@ -70,4 +74,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## License
 
-[BSD-3-Clause](https://github.com/opensite-ai/opensite-hooks/LICENSE) © [OpenSite AI](https://opensite.ai)
+[BSD-3-Clause](https://github.com/opensite-ai/page-speed-router/LICENSE) © [OpenSite AI](https://opensite.ai)
