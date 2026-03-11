@@ -1,6 +1,6 @@
 {
   "name": "@page-speed/router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Lightweight SSR-compatible routing for the PageSpeed ecosystem",
   "keywords": [
     "react",
@@ -22,9 +22,16 @@
   "license": "BSD-3-Clause",
   "private": false,
   "type": "module",
-  "main": "dist/index.cjs",
+  "main": "dist/index.js",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -34,7 +41,7 @@
   },
   "scripts": {
     "build": "pnpm run build:lib && pnpm run build:umd",
-    "build:lib": "tsc && node scripts/emit-cjs.js",
+    "build:lib": "tsc && node scripts/build-cjs-esbuild.js",
     "build:umd": "vite build --config vite.umd.config.ts",
     "build:watch": "tsc -w",
     "clean": "rimraf dist",
@@ -63,6 +70,7 @@
     "@typescript-eslint/parser": "^8.46.0",
     "@vitejs/plugin-react": "^4.2.1",
     "@vitest/coverage-v8": "^3.2.4",
+    "esbuild": "^0.27.3",
     "eslint": "^9.37.0",
     "happy-dom": "^15.11.7",
     "husky": "^9.1.7",

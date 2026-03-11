@@ -5,6 +5,15 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.1] - 2026-03-10
+
+### Fixed
+
+- Fixed CommonJS build to use proper CommonJS syntax instead of ESM
+- Fixed `isBrowser` export not being available in CommonJS environments
+- Replaced simple file copying with esbuild for proper CommonJS transpilation
+- Fixed "Named export 'isBrowser' not found" error in Node.js CommonJS contexts
+
 ## [1.0.0] - 2026-03-10
 
 ### Added
