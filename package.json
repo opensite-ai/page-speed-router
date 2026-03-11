@@ -1,6 +1,6 @@
 {
   "name": "@page-speed/router",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Lightweight SSR-compatible routing for the PageSpeed ecosystem",
   "keywords": [
     "react",
@@ -41,7 +41,7 @@
   },
   "scripts": {
     "build": "pnpm run build:lib && pnpm run build:umd",
-    "build:lib": "tsc && node scripts/build-cjs-esbuild.js",
+    "build:lib": "tsc && node scripts/fix-esm-imports.js && node scripts/build-cjs-esbuild.js",
     "build:umd": "vite build --config vite.umd.config.ts",
     "build:watch": "tsc -w",
     "clean": "rimraf dist",
