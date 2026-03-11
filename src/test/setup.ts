@@ -101,9 +101,64 @@ Object.defineProperty(window, "sessionStorage", {
   value: sessionStorageMock,
 });
 
+// Mock window.location for router tests
+Object.defineProperty(window, "location", {
+  writable: true,
+  value: {
+    href: "http://localhost:3000/",
+    origin: "http://localhost:3000",
+    protocol: "http:",
+    host: "localhost:3000",
+    hostname: "localhost",
+    port: "3000",
+    pathname: "/",
+    search: "",
+    hash: "",
+    assign: vi.fn(),
+    replace: vi.fn(),
+    reload: vi.fn(),
+  },
+});
+
+// Mock window.history for router tests
+Object.defineProperty(window, "history", {
+  writable: true,
+  value: {
+    length: 1,
+    state: null,
+    pushState: vi.fn(),
+    replaceState: vi.fn(),
+    go: vi.fn(),
+    back: vi.fn(),
+    forward: vi.fn(),
+  },
+});
+
+// Mock scrollTo for smooth scrolling tests
+window.scrollTo = vi.fn();
+
+// Mock getElementById with focus support
+const originalGetElementById = document.getElementById.bind(document);
+document.getElementById = vi.fn((id: string) => {
+  const element = originalGetElementById(id);
+  if (element) {
+    element.focus = vi.fn();
+  }
+  return element;
+});
+
 // Clear mocks between tests
 afterEach(() => {
   vi.clearAllMocks();
   localStorageMock.clear();
   sessionStorageMock.clear();
+  // Reset location and history mocks if window exists
+  if (typeof window !== 'undefined') {
+    (window.location as any).href = "http://localhost:3000/";
+    (window.location as any).pathname = "/";
+    (window.location as any).search = "";
+    (window.location as any).hash = "";
+    (window.history as any).state = null;
+    (window.history as any).length = 1;
+  }
 });

@@ -1,7 +1,7 @@
 {
   "name": "@page-speed/router",
-  "version": "0.0.1",
-  "description": "Performance-first React hooks for UI state, storage, events, and responsive behavior with tree-shakable exports.",
+  "version": "1.0.0",
+  "description": "Lightweight SSR-compatible routing for the PageSpeed ecosystem",
   "keywords": [
     "react",
     "router",
