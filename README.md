@@ -9,7 +9,6 @@
 [![npm version](https://img.shields.io/npm/v/@page-speed/router?style=for-the-badge)](https://www.npmjs.com/package/@page-speed/router)
 [![npm downloads](https://img.shields.io/npm/dm/@page-speed/router?style=for-the-badge)](https://www.npmjs.com/package/@page-speed/router)
 [![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue?style=for-the-badge)](./tsconfig.json)
-[![Tree-Shakeable](https://img.shields.io/badge/Tree%20Shakeable-Yes-brightgreen?style=for-the-badge)](#tree-shaking)
 
 
 ## Features
