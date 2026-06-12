@@ -39,6 +39,14 @@ export {
   useMultiMatch,
 } from './hooks/useRouteMatch';
 
+// Analytics (opt-in — tree-shaken away unless imported)
+export { usePageViews } from './analytics/usePageViews';
+export {
+  usePageViewAnalytics,
+  PageViewAnalytics,
+} from './analytics/usePageViewAnalytics';
+export { getDeviceType } from './analytics/getDeviceType';
+
 // Utilities
 export {
   scrollToAnchor,
@@ -84,4 +92,9 @@ export type {
   PathMatch,
   ScrollBehavior,
   ScrollOptions,
+  PageView,
+  PageViewDevice,
+  UsePageViewsOptions,
+  PageViewAnalyticsPayload,
+  PageViewAnalyticsOptions,
 } from './types';

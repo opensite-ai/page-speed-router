@@ -28,6 +28,12 @@ async function testExports() {
       'useIsActive',
       'useMultiMatch',
 
+      // Analytics (opt-in)
+      'usePageViews',
+      'usePageViewAnalytics',
+      'PageViewAnalytics',
+      'getDeviceType',
+
       // Utilities
       'isBrowser',
       'isSSR',

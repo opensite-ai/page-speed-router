@@ -329,6 +329,56 @@ if (match?.path.startsWith('/blog')) {
 </RouterProvider>
 ```
 
+Note: `onNavigate` only fires for the initial load when `initialPath` matches
+the current location. For reliable page-view tracking (initial load + every
+navigation), use the analytics hooks below.
+
+## Page View Analytics (Opt-In)
+
+Fully optional — if you never import these, they are tree-shaken away and the
+router behaves exactly as before. Apps that use the router without analytics
+(showcases, internal tools) need no changes.
+
+### `usePageViews()` — bring your own backend
+
+Fires once after mount and once per client-side navigation (`routechange` and
+browser back/forward). Consecutive duplicate paths are deduped, so the double
+event dispatched by `navigateTo` and hash-only changes never double-count.
+
+```tsx
+import { usePageViews } from '@page-speed/router';
+
+usePageViews(({ path, previousPath, isInitial }) => {
+  myAnalytics.track('page_view', { path, isInitial });
+});
+```
+
+### `usePageViewAnalytics()` / `<PageViewAnalytics />` — DashTrack analytics engine
+
+Reports page views to `POST /website_page_views` on the DashTrack API.
+
+```tsx
+import { RouterProvider, PageViewAnalytics } from '@page-speed/router';
+
+<RouterProvider>
+  <PageViewAnalytics websiteToken={website.token} />
+  <App />
+</RouterProvider>
+```
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| `websiteToken` | `string \| null \| undefined` | - | The website's UUID `token` (**not** the numeric website id). Tracking no-ops when absent. |
+| `apiBaseUrl` | `string` | `https://api.dashtrack.com` | Analytics API origin |
+| `category` | `string` | `'webpage'` | Page view category |
+| `enabled` | `boolean` | `true` | Set `false` to suspend tracking (e.g. in development) |
+| `transformPayload` | `(payload, view) => payload \| null` | - | Inspect/extend the payload, or return `null` to skip a view |
+
+Delivery details: payload is nested under the `website_page_view` wrapper key,
+sent with `keepalive: true` and no credentials; failures are swallowed so
+analytics can never break the host site. The visitor IP is derived server-side
+from the request — no client-side IP lookup is performed.
+
 ## API Reference
 
 ### RouterProvider Props

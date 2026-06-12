@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2026-06-12
+
+### Added
+
+#### Page View Analytics (opt-in)
+
+- `usePageViews(onPageView, options?)` - Backend-agnostic page view observer:
+  fires once for the initial load and once per client-side navigation
+  (`routechange` + `popstate`), with consecutive-path dedup so the double
+  event dispatched by `navigateTo` and hash-only changes never double-count
+- `usePageViewAnalytics(options)` - Reports page views to the DashTrack
+  analytics engine (`POST /website_page_views`). Requires `websiteToken`
+  (the website's UUID `token`, NOT the numeric website id); supports
+  `apiBaseUrl`, `category`, `enabled`, and `transformPayload` options.
+  Payload is explicitly nested under the `website_page_view` wrapper key.
+  Visitor IP is derived server-side (no client-side IP lookup)
+- `PageViewAnalytics` - Declarative component wrapper (renders nothing)
+- `getDeviceType()` - SSR-safe device detection ('mobile' | 'desktop' | 'unknown')
+- New exported types: `PageView`, `PageViewDevice`, `UsePageViewsOptions`,
+  `PageViewAnalyticsPayload`, `PageViewAnalyticsOptions`
+
+All analytics exports are fully opt-in: consumers that do not import them are
+unaffected (tree-shaken away, no behavior change, no bundle growth).
+
 ## [1.0.2] - 2026-03-10
 
 ### Fixed

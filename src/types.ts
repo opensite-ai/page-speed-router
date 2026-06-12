@@ -71,3 +71,56 @@ export interface ScrollOptions {
   smooth?: boolean;
   offset?: number;
 }
+
+// ─── Analytics (opt-in) ─────────────────────────────────────────────────────
+
+export type PageViewDevice = 'mobile' | 'desktop' | 'unknown';
+
+export interface PageView {
+  /** Pathname of the viewed page */
+  path: string;
+  /** Pathname of the previously viewed page, null for the initial view */
+  previousPath: string | null;
+  /** True for the first page view after load/hydration */
+  isInitial: boolean;
+}
+
+export interface UsePageViewsOptions {
+  /** Set false to suspend tracking entirely (default true) */
+  enabled?: boolean;
+}
+
+export interface PageViewAnalyticsPayload {
+  path: string;
+  /**
+   * The website's UUID token (websites.token). The analytics endpoint
+   * resolves websites by token even though the wire param is `website_id` —
+   * never send the numeric website id here.
+   */
+  website_id: string;
+  category: string;
+  device: PageViewDevice;
+  traffic_source?: string;
+}
+
+export interface PageViewAnalyticsOptions {
+  /**
+   * The website's UUID token (websites.token), NOT the numeric website id.
+   * Tracking no-ops when absent, so consumers without a token are unaffected.
+   */
+  websiteToken: string | null | undefined;
+  /** Analytics API origin (default https://api.dashtrack.com) */
+  apiBaseUrl?: string;
+  /** Page view category (default 'webpage') */
+  category?: string;
+  /** Set false to suspend tracking entirely (default true) */
+  enabled?: boolean;
+  /**
+   * Inspect/extend the payload before it is sent, or return null to skip
+   * reporting this particular view.
+   */
+  transformPayload?: (
+    payload: PageViewAnalyticsPayload,
+    view: PageView
+  ) => PageViewAnalyticsPayload | null;
+}
